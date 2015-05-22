@@ -1,0 +1,13 @@
+default:
+    paths:
+        features: tests/features
+        bootstrap: %behat.paths.features%/bootstrap
+    context:
+        parameters:
+            api_version: "1.0"
+            env:
+              API_DB_DRIVER: pdo_sqlite
+              API_DB_NAME: :memory:
+              API_DB_MEMORY: true
+              API_DB_USER: root
+              API_DB_PWD:
