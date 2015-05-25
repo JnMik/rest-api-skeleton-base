@@ -1,5 +1,5 @@
 {
-  "name": "crakmedia/api-domains",
+  "name": "crakmedia/user-service",
   "license": "proprietary",
   "authors": [
     {
@@ -20,7 +20,6 @@
     "phpunit/phpunit": "~4.6",
     "behat/behat": "2.4.*@stable"
   },
-  "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
       "Crak\\Api\\DefaultNS\\": "src/"
