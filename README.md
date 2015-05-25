@@ -1,7 +1,7 @@
-UserService
+DefaultService
 ===================
 
-Service for User
+Service for ...
 
 Installation
 ------------

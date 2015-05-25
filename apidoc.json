@@ -1,7 +1,7 @@
 {
-  "name": "User Service",
+  "name": "Default Service",
   "version": "1.0",
-  "description": "User Service",
+  "description": "Service for ...",
   "url" : "http://user.vm1.switmeyer.dev.lan/1.0",
   "sampleUrl" : "http://user.vm1.switmeyer.dev.lan/1.0"
 }
