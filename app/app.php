@@ -12,7 +12,6 @@ use Crak\Api\DefaultNS\Provider\DefaultValidatorProvider;
 use Crak\Api\DefaultNS\Provider\RestNormalizerProvider;
 use Crak\Api\DefaultNS\Repository\DefaultRepository;
 use Silex\Application;
-use Silex\Provider\MonologServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,15 +23,6 @@ $app['api.endpoint'] = '/';
 require __DIR__ . '/config.php';
 require __DIR__ . '/middleware.php';
 require __DIR__ . '/routing.php';
-
-//Monolog
-$app->register(
-    new MonologServiceProvider(),
-    array(
-        'monolog.logfile' => ROOT_PATH . '/logs/app.log',
-        'monolog.class_path' => ROOT_PATH . '/vendor/monolog/src'
-    )
-);
 
 //Rest Normalizer
 $app->register(new RestNormalizerProvider());
@@ -55,7 +45,7 @@ $app->register(new DefaultControllerProvider());
 //Errors
 $app->error(
     function (\Exception $e, $code) use ($app) {
-        $app['monolog']->addError($e->getMessage());
+        $app['logger']->addError($e->getMessage());
 
         return new JsonResponse(['error' => $e->getMessage()], $code);
     }

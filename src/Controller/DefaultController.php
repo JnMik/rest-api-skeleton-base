@@ -9,8 +9,7 @@
 
 namespace Crak\Api\DefaultNS\Controller;
 
-use Crak\Api\DefaultNS\Repository\DefaultRepository;
-use Crak\Api\DefaultNS\Validator\DefaultValidator;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Class DefaultController
@@ -20,29 +19,19 @@ use Crak\Api\DefaultNS\Validator\DefaultValidator;
  */
 class DefaultController extends Controller
 {
-    /**
-     * @var \Crak\Api\DefaultNS\Repository\DefaultRepository
-     */
-    private $repository;
+    protected $logger;
 
-    /**
-     * @var DefaultValidator
-     */
-    private $validator;
-
-    /**
-     * @param \Closure $responseBuilderClosure
-     * @param DefaultRepository $repository
-     * @param DefaultValidator $validator
-     */
     public function __construct(
         \Closure $responseBuilderClosure,
-        DefaultRepository $repository,
-        DefaultValidator $validator
+        $logger
     ) {
-        parent::__construct($responseBuilderClosure);
+        parent::__construct($responseBuilderClosure, $logger);
 
-        $this->repository = $repository;
-        $this->validator = $validator;
+        $this->logger = $logger;
+    }
+
+    public function ping()
+    {
+         return new JsonResponse(['status' => 'OK'], 200);
     }
 }

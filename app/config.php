@@ -6,22 +6,54 @@
  *
  * @copyright 2015 Crakmedia
  */
+use Silex\Provider\MonologServiceProvider;
 
 if (!defined('ROOT_PATH')) {
     define("ROOT_PATH", __DIR__ . "/..");
 }
+
+define('APP_NAME', 'DefaultServiceAppName');
 
 //Doctrine
 $app->register(
     new \Silex\Provider\DoctrineServiceProvider(),
     array(
         'db.options' => array(
-            'driver' => getenv('API_DB_DRIVER') ? : 'pdo_mysql',
-            'dbname' => getenv('API_DB_NAME') ? : 'db_crakpass',
-            'user' => getenv('API_DB_USER') ? : 'root',
-            'password' => getenv('API_DB_PWD') ? : '',
-            'memory' => getenv('API_DB_MEMORY') ? : false,
+            'driver' => getenv('API_DB_DRIVER'),
+            'dbname' => getenv('API_DB_NAME'),
+            'user' => getenv('API_DB_USER'),
+            'password' => getenv('API_DB_PWD'),
+            'memory' => getenv('API_DB_MEMORY'),
             'charset' => 'utf8',
         )
     )
+);
+
+//Redis
+$app->register(
+    new Predis\Silex\ClientServiceProvider(),
+    [
+        'predis.parameters' => getenv('REDIS_HOST'),
+    ]
+);
+
+//Monolog
+$app->register(
+    new MonologServiceProvider(),
+    [
+        'monolog.handler' => function () use ($app) {
+                $level = MonologServiceProvider::translateLevel($app['monolog.level']);
+
+                $handler = new \Monolog\Handler\SyslogUdpHandler(
+                    getenv('RSYSLOGD'),
+                    getenv('RSYSLOGD_PORT'),
+                    LOG_USER,
+                    $level,
+                    $app['monolog.bubble']
+                );
+                $formatter = new \Monolog\Formatter\LogstashFormatter(APP_NAME);
+                $handler->setFormatter($formatter);
+                return $handler;
+            },
+    ]
 );

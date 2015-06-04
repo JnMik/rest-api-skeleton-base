@@ -12,6 +12,7 @@
     "doctrine/dbal": "~2.2",
     "monolog/monolog": "~1.13",
     "crakmedia/rest-normalizer": "~1.0",
+    "predis/service-provider": "~1.0",
     "dbtlr/silex-doctrine-migrations": "dev-master"
   },
   "minimum-stability": "dev",

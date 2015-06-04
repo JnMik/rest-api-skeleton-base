@@ -13,9 +13,9 @@
 $api = $app['controllers_factory'];
 /** @var $api \Silex\ControllerCollection */
 
-$api->get('/ping', "domain.controller:ping");
+$api->get('/ping', "default.controller:ping");
 
-$api->get('/default', 'default.controller:fetchAll');
+$api->get('/default',  'default.controller:fetchAll');
 $api->post('/default', "default.controller:create");
 $api->get('/default/{id}', 'default.controller:findById');
 $api->put('/default/{id}', "default.controller:update");

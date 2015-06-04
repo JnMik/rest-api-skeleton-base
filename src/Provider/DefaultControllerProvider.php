@@ -9,6 +9,7 @@
 
 namespace Crak\Api\DefaultNS\Provider;
 
+use Crak\Api\DefaultNS\Controller\DefaultController;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
@@ -28,7 +29,14 @@ class DefaultControllerProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-        // TODO: Implement register() method.
+        $app['default.controller'] = $app->share(
+            function () use ($app) {
+                return new DefaultController(
+                    $app['rest_normalizer.builder'],
+                    $app['logger']
+                );
+            }
+        );
     }
 
     /**
