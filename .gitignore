@@ -3,3 +3,5 @@ doc/
 .idea
 logs/*
 bin/*
+
+!logs/.gitkeep

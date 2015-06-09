@@ -8,6 +8,8 @@
  */
 use Silex\Provider\MonologServiceProvider;
 
+date_default_timezone_set('UTC');
+
 if (!defined('ROOT_PATH')) {
     define("ROOT_PATH", __DIR__ . "/..");
 }
@@ -30,12 +32,12 @@ $app->register(
 );
 
 //Redis
-$app->register(
-    new Predis\Silex\ClientServiceProvider(),
-    [
-        'predis.parameters' => getenv('REDIS_HOST'),
-    ]
-);
+//$app->register(
+//    new Predis\Silex\ClientServiceProvider(),
+//    [
+//        'predis.parameters' => getenv('REDIS_HOST'),
+//    ]
+//);
 
 //Monolog
 $app->register(
@@ -45,7 +47,7 @@ $app->register(
                 $level = MonologServiceProvider::translateLevel($app['monolog.level']);
 
                 $handler = new \Monolog\Handler\SyslogUdpHandler(
-                    getenv('RSYSLOGD'),
+                    getenv('RSYSLOGD_HOST'),
                     getenv('RSYSLOGD_PORT'),
                     LOG_USER,
                     $level,

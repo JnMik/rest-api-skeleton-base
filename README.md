@@ -45,3 +45,12 @@ Generate doc
     $ apidoc -i src/Controller/ -o doc
 
 Launch `doc/index.html` with your browser.
+
+Dockerize the service
+---------------------
+
+    $ composer install
+
+    $ docker build -t monolog-service:latest .
+
+    $ docker-compose up
