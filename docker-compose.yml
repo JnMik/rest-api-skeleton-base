@@ -5,6 +5,7 @@ service:
    - "8043:443"
   volumes:
     - /tmp:/var/log/nginx
+    - /tmp:/var/log/php-fpm
     - .:/srv/www
     - ./docker/conf.d:/etc/nginx/conf.d
     - ./docker/nginx.conf:/etc/nginx/nginx.conf
