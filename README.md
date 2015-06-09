@@ -51,6 +51,6 @@ Dockerize the service
 
     $ composer install
 
-    $ docker build -t monolog-service:latest .
+    $ docker build -t crakmedia/skeleton-service:latest .
 
     $ docker-compose up

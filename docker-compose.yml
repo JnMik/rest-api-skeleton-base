@@ -1,11 +1,11 @@
-service:
-  image: monolog-service:latest
+skeletonservice:
+  image: crakmedia/skeleton-service:latest
   ports:
    - "8080:80"
    - "8043:443"
   volumes:
-    - /tmp:/var/log/nginx
-    - /tmp:/var/log/php-fpm
+    - /tmp/nginx:/var/log/nginx
+    - /tmp/php-fpm:/var/log/php-fpm
     - .:/srv/www
     - ./docker/conf.d:/etc/nginx/conf.d
     - ./docker/nginx.conf:/etc/nginx/nginx.conf
