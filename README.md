@@ -18,11 +18,7 @@ Set your environment variables to define database access. For example, in your n
         fastcgi_param API_DB_USER root;
         fastcgi_param API_DB_PWD password;
         fastcgi_param API_DB_DRIVER pdo_mysql;
-        fastcgi_param API_DB_MEMORY false;
-        fastcgi_param API_MONITOR_HOST 127.0.0.1;
-        fastcgi_param API_MONITOR_PORT 8125;
-        fastcgi_param API_MONITOR_NAMESPACE api;
-        ...
+        fastcgi_param API_DB_MEMORY false;        ...
     }
 
 Tests
