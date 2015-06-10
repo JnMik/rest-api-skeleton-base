@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eb0f940940c2145d034042ca9134dad1",
+    "hash": "a1d7da4b06a14991d3caf78720c1bf30",
     "packages": [
         {
             "name": "bcolucci/type",
@@ -742,6 +742,52 @@
                 "silex"
             ],
             "time": "2013-06-13 12:43:39"
+        },
+        {
+            "name": "league/statsd",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/statsd.git",
+                "reference": "dbeb2920843593b1025b7575604fd0f6a187d0a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/statsd/zipball/dbeb2920843593b1025b7575604fd0f6a187d0a9",
+                "reference": "dbeb2920843593b1025b7575604fd0f6a187d0a9",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "silex/silex": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\StatsD\\": "src",
+                    "League\\StatsD\\Test\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marc Qualie",
+                    "email": "marc@marcqualie.com",
+                    "homepage": "http://marcqualie.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library for working with StatsD in PHP.",
+            "homepage": "https://github.com/thephpleague/statsd",
+            "keywords": [
+                "graphite",
+                "library",
+                "statsd"
+            ],
+            "time": "2015-05-17 18:48:34"
         },
         {
             "name": "mockery/mockery",

@@ -14,7 +14,9 @@
     "crakmedia/rest-normalizer": "~1.0",
     "predis/service-provider": "~1.0",
     "dbtlr/silex-doctrine-migrations": "dev-master",
-    "mockery/mockery": "0.9.4"
+    "mockery/mockery": "0.9.4",
+    "league/statsd" : "1.2.0",
+    "predis/service-provider": "~1.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
