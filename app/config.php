@@ -59,3 +59,18 @@ $app->register(
             },
     ]
 );
+
+// Monitoring - use $app['monitor'] (\League\StatsD\Client) to monitor custom metrics
+$app->register(
+    new \League\StatsD\Silex\Provider\StatsdServiceProvider(),
+    array(
+        'statsd.host' => getenv('API_MONITOR_HOST'),
+        'statsd.port' => getenv('API_MONITOR_PORT'),
+        'statsd.namespace' => getenv('API_MONITOR_NAMESPACE'),
+    )
+);
+
+$app['monitor'] = function () use ($app) {
+    return $app['statsd'];
+};
+

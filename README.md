@@ -18,8 +18,7 @@ Set your environment variables to define database access. For example, in your n
         fastcgi_param API_DB_USER root;
         fastcgi_param API_DB_PWD password;
         fastcgi_param API_DB_DRIVER pdo_mysql;
-        fastcgi_param API_DB_MEMORY false;
-        ...
+        fastcgi_param API_DB_MEMORY false;        ...
     }
 
 Tests
@@ -54,3 +53,9 @@ Dockerize the service
     $ docker build -t crakmedia/skeleton-service:latest .
 
     $ docker-compose up
+
+Monitor your metrics
+--------------------
+
+In order to monitor metrics of application, you should use $app['monitor']. For more information about how to use, see
+[documentation of the client](https://github.com/thephpleague/statsd)
