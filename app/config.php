@@ -14,7 +14,9 @@ if (!defined('ROOT_PATH')) {
     define("ROOT_PATH", __DIR__ . "/..");
 }
 
-define('APP_NAME', 'DefaultServiceAppName');
+if (!defined('APP_NAME')) {
+    define('APP_NAME', 'DefaultServiceAppName');
+}
 
 //Doctrine
 $app->register(
