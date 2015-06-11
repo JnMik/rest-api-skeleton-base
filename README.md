@@ -21,8 +21,17 @@ Set your environment variables to define database access. For example, in your n
         fastcgi_param API_DB_MEMORY false;        ...
     }
 
+Migrations
+------------
+
+Run migrations
+
+    $ php app/console migrations:migrate
+
 Tests
 ------------
+
+Copy `test/config.yml.dist` to `test/config.yml` and configure your test database
 
 Unit tests
 

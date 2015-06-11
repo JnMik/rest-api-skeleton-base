@@ -108,5 +108,13 @@ class FeatureContext extends BehatContext
         foreach ($parameters['env'] as $key => $value) {
             putenv($key . "=" . $value);
         }
+
+        //Create migrations
+        $dbalConnection = \Crak\Api\DefaultNS\DbalConnection::create();
+
+        $configuration = \Crak\Api\DefaultNS\MigrationConfiguration::create($dbalConnection);
+
+        $version = $configuration->getVersion('20150611135326');
+        $version->execute('up');
     }
 }
