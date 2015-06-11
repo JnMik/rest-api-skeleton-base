@@ -10,7 +10,7 @@ Getting started
 
     $ docker build -t crakmedia/skeleton-service:latest .
 
-    $ mv docker-compose.yml.dist docker-compose.yml
+    $ cp docker-compose.yml.dist docker-compose.yml
 
     $ docker-compose up
 
