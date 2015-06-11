@@ -32,6 +32,6 @@ class DefaultController extends Controller
 
     public function ping()
     {
-         return new JsonResponse(['status' => 'OK'], 200);
+        return new JsonResponse(['status' => 'OK'], 200);
     }
 }

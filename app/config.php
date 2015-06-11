@@ -6,6 +6,7 @@
  *
  * @copyright 2015 Crakmedia
  */
+use Monolog\Formatter\LineFormatter;
 use Silex\Provider\MonologServiceProvider;
 
 date_default_timezone_set('UTC');
@@ -48,17 +49,20 @@ $app->register(
         'monolog.handler' => function () use ($app) {
                 $level = MonologServiceProvider::translateLevel($app['monolog.level']);
 
-                $handler = new \Monolog\Handler\SyslogUdpHandler(
-                    getenv('RSYSLOGD_HOST'),
-                    getenv('RSYSLOGD_PORT'),
-                    LOG_USER,
-                    $level,
-                    $app['monolog.bubble']
-                );
-                $formatter = new \Monolog\Formatter\LogstashFormatter(APP_NAME);
-                $handler->setFormatter($formatter);
-                return $handler;
-            },
+            $handler = new \Monolog\Handler\SyslogUdpHandler(
+                getenv('RSYSLOGD_HOST'),
+                getenv('RSYSLOGD_PORT'),
+                LOG_USER,
+                $level,
+                $app['monolog.bubble']
+            );
+
+            $formatter = new LineFormatter("[%datetime%] %level_name% " . gethostname() . " %channel%  %message%\n");
+            $handler->setFormatter($formatter);
+
+            return $handler;
+        },
+        'monolog.name' => APP_NAME,
     ]
 );
 
