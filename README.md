@@ -25,16 +25,9 @@ the base image. In this case you just need to add a new voluming mapping under t
 volumes section in your docker-compose.yml file:
 
 
-  ```
-  .... everything before volumes
     volumes:
-      - /var/log/skeleton-service:/var/log
-      - /var/log/skeleton-service/nginx:/var/log/nginx
-      - /var/log/skeleton-service/php-fpm:/var/log/php-fpm
-      - /var/lib/php/session:/tmp/php-session
-      - .:/srv/www
-      - /path/to/nginx.conf:/etc/nginx/nginx.conf
-  ```
+     ... existing mappings ...
+     - /path/to/nginx.conf:/etc/nginx/nginx.conf
 
 The following is a list of files/directories added in the base image, which could be
 overriden:
