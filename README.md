@@ -1,28 +1,55 @@
-DefaultService
+Skeleton Service
 ===================
 
-Service for ...
+This project is intented to be a skeleton for PHP based services.
 
-Installation
-------------
-
-Install vendors
+Getting started
+===================
 
     $ composer install
 
-Set your environment variables to define database access. For example, in your nginx config file
+    $ docker build -t crakmedia/skeleton-service:latest .
 
-    location @site {
-        ...
-        fastcgi_param API_DB_NAME db_crakpass;
-        fastcgi_param API_DB_USER root;
-        fastcgi_param API_DB_PWD password;
-        fastcgi_param API_DB_DRIVER pdo_mysql;
-        fastcgi_param API_DB_MEMORY false;        ...
-    }
+    $ mv docker-compose.yml.dist docker-compose.yml
+
+    $ docker-compose up
+
+
+Overriding default settings
+==================
+
+Should over need to override the default configuratio for any of the services
+runing within the container, you can add docker volumes to your docker-compose.yml.
+As an example, say you need to modify the default nginx configuration provided by
+the base image. In this case you just need to add a new voluming mapping under the
+volumes section in your docker-compose.yml file:
+
+
+  ```
+  .... everything before volumes
+    volumes:
+      - /var/log/skeleton-service:/var/log
+      - /var/log/skeleton-service/nginx:/var/log/nginx
+      - /var/log/skeleton-service/php-fpm:/var/log/php-fpm
+      - /var/lib/php/session:/tmp/php-session
+      - .:/srv/www
+      - /path/to/nginx.conf:/etc/nginx/nginx.conf
+  ```
+
+The following is a list of files/directories added in the base image, which could be
+overriden:
+  
+    - /etc/nginx/conf.d
+    - /etc/nginx/nginx.conf
+    - /etc/php.ini
+    - /etc/php-fpm.conf
+    - /etc/php-fpm.d
+
+Of course you can always using docker volumes to override any file/directory within the running
+container. See [here](https://docs.docker.com/userguide/dockervolumes/) for more details.
 
 Tests
-------------
+==================
 
 Unit tests
 
@@ -33,7 +60,7 @@ Functional tests
     $ bin/behat
 
 Generate doc
-------------
+==================
 
 Install apidoc
 
@@ -45,17 +72,9 @@ Generate doc
 
 Launch `doc/index.html` with your browser.
 
-Dockerize the service
----------------------
-
-    $ composer install
-
-    $ docker build -t crakmedia/skeleton-service:latest .
-
-    $ docker-compose up
 
 Monitor your metrics
---------------------
+==================
 
 In order to monitor metrics of application, you should use $app['monitor']. For more information about how to use, see
 [documentation of the client](https://github.com/thephpleague/statsd)
