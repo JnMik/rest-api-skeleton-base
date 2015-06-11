@@ -1,0 +1,13 @@
+skeletonservice:
+  image: crakmedia/skeleton-service:latest
+  ports:
+   - "8080:80"
+   - "8043:443"
+  volumes:
+    - /var/log/skeleton-service:/var/log
+    - /var/log/skeleton-service/nginx:/var/log/nginx
+    - /var/log/skeleton-service/php-fpm:/var/log/php-fpm
+    - /var/lib/php/session:/tmp/php-session
+    - .:/srv/www
+  env_file:
+    - ./docker/develop.env
