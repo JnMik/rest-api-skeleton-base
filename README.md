@@ -38,7 +38,7 @@ overriden:
     - /etc/php-fpm.conf
     - /etc/php-fpm.d
 
-Of course you can always using docker volumes to override any file/directory within the running
+Of course you can always use docker volumes to override any file/directory within a running
 container. See [here](https://docs.docker.com/userguide/dockervolumes/) for more details.
 
 Tests
