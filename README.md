@@ -41,8 +41,17 @@ overriden:
 Of course you can always use docker volumes to override any file/directory within a running
 container. See [here](https://docs.docker.com/userguide/dockervolumes/) for more details.
 
+Migrations
+------------
+
+Run migrations
+
+    $ php app/console migrations:migrate
+
 Tests
 ==================
+
+Copy `test/config.yml.dist` to `test/config.yml` and configure your test database
 
 Unit tests
 

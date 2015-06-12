@@ -36,10 +36,5 @@ $app->register(
     )
 );
 
-//Hook for enum type
-$configuration = $app['db.config'];
-/** @var $configuration \Doctrine\DBAL\Configuration */
-$configuration->setFilterSchemaAssetsExpression('/(table)$/');
-
 $console = & $app["console"];
 $console->run();
