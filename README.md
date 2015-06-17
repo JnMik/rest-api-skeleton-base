@@ -6,11 +6,13 @@ This project is intented to be a skeleton for PHP based services.
 Getting started
 ===================
 
-    $ composer install
-
     $ docker build -t crakmedia/skeleton-service:latest .
-
+    
     $ cp docker-compose.yml.dist docker-compose.yml
+
+    $ docker-compose run shell
+ 
+        $ composer install
 
     $ docker-compose up
 
@@ -42,20 +44,24 @@ Of course you can always use docker volumes to override any file/directory withi
 container. See [here](https://docs.docker.com/userguide/dockervolumes/) for more details.
 
 Migrations
-------------
+==================
 
 Run migrations
+
+    $ docker-compose run shell
 
     $ php app/console migrations:migrate
 
 Tests
 ==================
 
-Copy `test/config.yml.dist` to `test/config.yml` and configure your test database
+First, go in your container shell
 
-Unit tests
+    $ docker-compose run shell
 
-    $ phpunit
+Copy `tests/config.yml.dist` to `tests/config.yml` and configure your test database
+
+    $ cp tests/config.yml.dist tests/config.yml
 
 Functional tests
 

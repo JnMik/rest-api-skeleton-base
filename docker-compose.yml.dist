@@ -11,3 +11,12 @@ skeletonservice:
     - .:/srv/www
   env_file:
     - ./docker/develop.env
+shell:
+  image: crakmedia/skeleton-service:latest
+  working_dir: /srv/www
+  entrypoint: ["/bin/bash"]
+  stdin_open: true
+  tty: true
+  volumes:
+    - .:/srv/www
+    - /root/.ssh:/root/.ssh
