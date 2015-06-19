@@ -7,3 +7,4 @@ bin/*
 !logs/.gitkeep
 
 docker-compose.yml
+phpunit.xml

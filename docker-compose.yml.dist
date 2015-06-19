@@ -9,6 +9,7 @@ skeletonservice:
     - /var/log/skeleton-service/php-fpm:/var/log/php-fpm
     - /var/lib/php/session:/tmp/php-session
     - .:/srv/www
+    - docker/php.d/15-xdebug.ini:/etc/php.d/15-xdebug.ini
   env_file:
     - ./docker/develop.env
 shell:
@@ -20,3 +21,4 @@ shell:
   volumes:
     - .:/srv/www
     - /root/.ssh:/root/.ssh
+    - docker/php.d/15-xdebug.ini:/etc/php.d/15-xdebug.ini

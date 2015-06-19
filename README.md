@@ -11,7 +11,7 @@ Getting started
     $ cp docker-compose.yml.dist docker-compose.yml
 
     $ docker-compose run shell
- 
+
         $ composer install
 
     $ docker-compose up
