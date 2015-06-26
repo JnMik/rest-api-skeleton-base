@@ -1,6 +1,6 @@
 {
-  "name": "crakmedia/user-service",
-  "license": "proprietary",
+  "name": "craklabs/skeleton-service",
+  "license": "MIT",
   "authors": [
     {
       "name": "Sylvain Witmeyer",
