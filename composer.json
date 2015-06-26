@@ -11,7 +11,7 @@
     "silex/silex": "~1.2",
     "doctrine/dbal": "~2.2",
     "monolog/monolog": "~1.13",
-    "crakmedia/rest-normalizer": "~1.0",
+    "craklabs/rest-normalizer": "~1.0",
     "predis/service-provider": "~1.0",
     "dbtlr/silex-doctrine-migrations": "~1.0",
     "doctrine/migrations": "~1.0@dev",
@@ -36,12 +36,6 @@
       "Crak\\Api\\DefaultNS\\": "tests/"
     }
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://packagist.crakmedia.lan:1280"
-    }
-  ],
   "config": {
     "bin-dir": "bin/"
   }
