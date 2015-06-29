@@ -11,7 +11,6 @@ use Crak\Api\DefaultNS\Provider\DefaultControllerProvider;
 use Crak\Api\DefaultNS\Provider\DefaultValidatorProvider;
 use Crak\Api\DefaultNS\Provider\RestNormalizerProvider;
 use Crak\Api\DefaultNS\Repository\DefaultRepository;
-use Silex\Application;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
