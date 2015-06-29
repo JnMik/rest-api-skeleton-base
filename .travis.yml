@@ -8,10 +8,7 @@ php:
 before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --no-interaction
+  - cp tests/config.yml.dist tests/config.yml
 
 script:
-  - mkdir -p build/logs
-  - php bin/phpunit -c phpunit.xml.dist
-
-after_script:
-  - php bin/coveralls
+  - php bin/behat
