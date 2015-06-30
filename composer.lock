@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a8be5a82e12351e2ebe30a8521219a9f",
+    "hash": "105c49ff027ed9d075b72b8cfef24c88",
     "packages": [
         {
             "name": "bcolucci/type",

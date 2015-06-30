@@ -1,6 +1,5 @@
 vendor/
 doc/
-.idea
 logs/*
 bin/*
 

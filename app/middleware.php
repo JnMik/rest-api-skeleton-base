@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 //Handling CORS preflight request
 $app->before(
-    function (Request $request) use ($app) {
+    function (Request $request) {
         if ($request->getMethod() === "OPTIONS") {
             $response = new Response();
             $response->headers->set("Access-Control-Allow-Origin", "*");

@@ -3,6 +3,11 @@ Skeleton Service
 
 This project is intented to be a skeleton for PHP based services.
 
+[![Minimum PHP Version](http://img.shields.io/badge/php-%3E%3D%205.4-8892BF.svg)](https://php.net/)
+[![Build Status](https://travis-ci.org/CrakLabs/skeleton-service.svg)](https://travis-ci.org/CrakLabs/rest-normalizer)
+[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/16996788-c5c9-4f59-817e-23592755f98d.svg)](https://insight.sensiolabs.com/projects/16996788-c5c9-4f59-817e-23592755f98d)
+[![License](https://img.shields.io/packagist/l/craklabs/skeleton-service.svg)](https://packagist.org/packages/craklabs/skeleton-service)
+
 Getting started
 ===================
 
