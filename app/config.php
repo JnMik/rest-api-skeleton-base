@@ -6,8 +6,6 @@
  *
  * @copyright 2015 Crakmedia
  */
-use Monolog\Formatter\LineFormatter;
-use Silex\Provider\MonologServiceProvider;
 
 date_default_timezone_set('UTC');
 
@@ -15,8 +13,15 @@ if (!defined('ROOT_PATH')) {
     define("ROOT_PATH", __DIR__ . "/..");
 }
 
-if (!defined('APP_NAME')) {
-    define('APP_NAME', 'DefaultServiceAppName');
+$app['serviceDependencyUrl'] = array();
+$app['hateoas'] = array();
+
+if(defined('SERVICE_DEPENDENCY_URL')) {
+    $app['serviceDependencyUrl'] = unserialize(SERVICE_DEPENDENCY_URL);
+}
+
+if(defined('HATEOAS')) {
+    $app['hateoas'] = unserialize(HATEOAS);
 }
 
 //Doctrine
@@ -24,11 +29,12 @@ $app->register(
     new \Silex\Provider\DoctrineServiceProvider(),
     array(
         'db.options' => array(
-            'driver' => getenv('API_DB_DRIVER'),
-            'dbname' => getenv('API_DB_NAME'),
-            'user' => getenv('API_DB_USER'),
-            'password' => getenv('API_DB_PWD'),
-            'memory' => getenv('API_DB_MEMORY'),
+            'driver' => API_DB_DRIVER,
+            'dbname' => API_DB_NAME,
+            'host' => API_DB_HOST,
+            'user' => API_DB_USER,
+            'password' => API_DB_PWD,
+            'memory' => API_DB_MEMORY,
             'charset' => 'utf8',
         )
     )
@@ -43,6 +49,7 @@ $app->register(
 //);
 
 //Monolog
+/*
 $app->register(
     new MonologServiceProvider(),
     [
@@ -80,3 +87,4 @@ $app['monitor'] = function () use ($app) {
     return $app['statsd'];
 };
 
+*/

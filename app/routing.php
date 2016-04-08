@@ -13,13 +13,14 @@
 $api = $app['controllers_factory'];
 /** @var $api \Silex\ControllerCollection */
 
-$api->get('/ping', "default.controller:ping");
+//$api->get('/ping', "default.controller:ping");
 
-$api->get('/default',  'default.controller:fetchAll');
-$api->post('/default', "default.controller:create");
-$api->get('/default/{id}', 'default.controller:findById');
-$api->put('/default/{id}', "default.controller:update");
-$api->delete('/default/{id}', "default.controller:delete");
+$api->get('/exemple',  'exemple.controller:fetchAll');
+$api->post('/exemple', "exemple.controller:create");
+$api->get('/exemple/{id}', 'exemple.controller:findById');
+$api->put('/exemple/{id}', "exemple.controller:update");
+$api->delete('/exemple/{id}', "exemple.controller:delete");
+
 
 //Mount routes
 $app->mount($app['api.endpoint'].$app['api.version'], $api);

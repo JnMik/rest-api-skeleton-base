@@ -1,26 +1,20 @@
 <?php
 /**
- * This file is property of crakmedia (http://crakmedia.com)
- *
- * PHP Version 5.4
- *
- * @copyright 2015 Crakmedia
+ * Created by JetBrains PhpStorm.
+ * User: Jm
+ * Date: 16-01-20
+ * Time: 20:42
+ * To change this template use File | Settings | File Templates.
  */
 
 namespace Crak\Api\DefaultNS\Provider;
 
-use Crak\Api\DefaultNS\Controller\DefaultController;
+use Crak\Api\DefaultNS\Controller\ExempleController;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
-/**
- * Class DefaultControllerProvider
- *
- * @package  Crak\Api\Domain\Provider
- * @author   Sylvain Witmeyer <switmeyer@crakmedia.com>
- */
-class DefaultControllerProvider implements ServiceProviderInterface
-{
+class ControllerProvider implements ServiceProviderInterface {
+
     /**
      * Registers services on the given app.
      *
@@ -29,14 +23,22 @@ class DefaultControllerProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
-        $app['default.controller'] = $app->share(
+
+        $app['exemple.controller'] = $app->share(
             function () use ($app) {
-                return new DefaultController(
+                return new ExempleController(
                     $app['rest_normalizer.builder'],
-                    $app['logger']
+                    $app['logger'],
+                    $app['exemple.repository'],
+                    $app['request'],
+                    $app['hateoas'],
+                    $app['paginator.service'],
+                    $app['json-api-transport.service'],
+                    'Crak\Api\DefaultNS\Model\ExempleModel'
                 );
             }
         );
+
     }
 
     /**
@@ -50,4 +52,5 @@ class DefaultControllerProvider implements ServiceProviderInterface
     {
         // TODO: Implement boot() method.
     }
+
 }

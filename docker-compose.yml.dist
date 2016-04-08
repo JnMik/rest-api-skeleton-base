@@ -1,19 +1,16 @@
 skeletonservice:
-  image: crakmedia/skeleton-service:latest
+  build: .
   ports:
-   - "8080:80"
-   - "8043:443"
+   - 9080:80
   volumes:
-    - /var/log/skeleton-service:/var/log
-    - /var/log/skeleton-service/nginx:/var/log/nginx
-    - /var/log/skeleton-service/php-fpm:/var/log/php-fpm
-    - /var/lib/php/session:/tmp/php-session
     - .:/srv/www
-    - docker/php.d/15-xdebug.ini:/etc/php.d/15-xdebug.ini
   env_file:
     - ./docker/develop.env
+  volumes:
+    - .:/srv/www
+    - ./docker/api.conf:/etc/nginx/conf.d/api.conf
 shell:
-  image: crakmedia/skeleton-service:latest
+  build: .
   working_dir: /srv/www
   entrypoint: ["/bin/bash"]
   stdin_open: true
@@ -21,4 +18,4 @@ shell:
   volumes:
     - .:/srv/www
     - /root/.ssh:/root/.ssh
-    - docker/php.d/15-xdebug.ini:/etc/php.d/15-xdebug.ini
+

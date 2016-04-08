@@ -2,7 +2,7 @@ vendor/
 doc/
 logs/*
 bin/*
-
+.idea
 !logs/.gitkeep
 
 docker-compose.yml

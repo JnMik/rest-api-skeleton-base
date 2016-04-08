@@ -1,15 +1,62 @@
-Skeleton Service
-===================
+# REST API Skeleton
 
-This project is intented to be a skeleton for PHP based services.
+This is a kickoff project to create an API rest in few minutes.
+There is also some stuff in place to help you use the Skeleton with Docker.
+Using this skeleton, rour api will handle crud methods get, post, put, delete as well as paging a bunch of RepositoryBase methods.
+The api is able to handle Hateoas resolving, sorting and joins on table.
+
+Here's basic usage example :
+
+    http://you-endpoint/1.0/resource-name
+    http://you-endpoint/1.0/resource-name/1
+    http://you-endpoint/1.0/resource-name?id[]=2&id[]=6
+    http://you-endpoint/1.0/resource-name?id!![]=6&id!![]=8&limit=500
+
+It's not perfect, but we encourage you to help us improve it :)
+
+# Create a new API -- Getting Started
+
+- Note that all your database table MUST have an id and deleted column so you can use the API generics.
+
+- Please copy envConfig.dist.php to envConfig.php and configure it
+
+- If you are using docker, copy docker-compose.yml.dist to docker-compose.yml
+
+- SET your newrelic app name in web/index.php
+
+- Create Models that will match your database schema, don't forget to use the interface
+
+- Define routings that your API will need in app/routing.php
+
+- Create your controllers in src/Controller, extends the ControllerBase all a bunch of methods will be ready to go (create, find, findByParameters, delete, update)
+
+- These controllers will need to be registered to the application, but first, please create a repository to manage your Model.
+
+    Something like that in the /app/app.php, another file could be create as well to store them
+    Main table Alias will be use for queries, in this example SELECT * from exemple_tablename E
+    fieldTableAlias are necessary when your repository feth more than one table in queries, but could be refactored in better code.
+    Using the DefaultRepository will provide you with all ready to use methods like [count, fetchAll, findById, findByParameters, create, update, delete, findNext, findPrevious and other private methods]
+    If you think your repository will have more custom needs, please create a new repository in src/Repository and extends RepositoryBase directly.
+
+    $app['example.repository'] = $app->share(
+        function () use ($app) {
+            $fieldTableAlias = array(
+                'id' => 'E',
+                'some_foreign_column' => 'some_foreign_table_alias'
+            );
+            $mainTableAlias = 'E';
+            return new DefaultRepository($app['db'], 'exemple_tablename', $fieldTableAlias, $mainTableAlias);
+        }
+    );
+
+- Now register these controllers in src/Provider/ControllerProvider.php
 
 [![Minimum PHP Version](http://img.shields.io/badge/php-%3E%3D%205.4-8892BF.svg)](https://php.net/)
 [![Build Status](https://travis-ci.org/CrakLabs/skeleton-service.svg)](https://travis-ci.org/CrakLabs/rest-normalizer)
 [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/16996788-c5c9-4f59-817e-23592755f98d.svg)](https://insight.sensiolabs.com/projects/16996788-c5c9-4f59-817e-23592755f98d)
 [![License](https://img.shields.io/packagist/l/craklabs/skeleton-service.svg)](https://packagist.org/packages/craklabs/skeleton-service)
 
-Getting started
-===================
+# Getting started
 
     $ docker build -t crakmedia/skeleton-service:latest .
     
@@ -22,10 +69,9 @@ Getting started
     $ docker-compose up
 
 
-Overriding default settings
-==================
+# Overriding default settings
 
-Should over need to override the default configuratio for any of the services
+Should over need to override the default configuration for any of the services
 runing within the container, you can add docker volumes to your docker-compose.yml.
 As an example, say you need to modify the default nginx configuration provided by
 the base image. In this case you just need to add a new voluming mapping under the
@@ -48,8 +94,7 @@ overriden:
 Of course you can always use docker volumes to override any file/directory within a running
 container. See [here](https://docs.docker.com/userguide/dockervolumes/) for more details.
 
-Migrations
-==================
+# Migrations
 
 Run migrations
 
@@ -57,8 +102,7 @@ Run migrations
 
     $ php app/console migrations:migrate
 
-Tests
-==================
+# Tests
 
 First, go in your container shell
 
@@ -72,8 +116,7 @@ Functional tests
 
     $ bin/behat
 
-Generate doc
-==================
+# Generate doc
 
 Install apidoc
 
@@ -86,8 +129,16 @@ Generate doc
 Launch `doc/index.html` with your browser.
 
 
-Monitor your metrics
-==================
+# Monitor your metrics
 
 In order to monitor metrics of application, you should use $app['monitor']. For more information about how to use, see
 [documentation of the client](https://github.com/thephpleague/statsd)
+
+# Hints
+
+If you are using docker and have connection timeout to the database, you should not use localhost a db_host, use your local IP instead.
+
+# Contributors
+
+- Crakmedia
+- Support3w
