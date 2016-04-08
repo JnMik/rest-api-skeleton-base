@@ -7,10 +7,10 @@ The api is able to handle Hateoas resolving, sorting and joins on table.
 
 Here's basic usage example :
 
-    http://you-endpoint/1.0/resource-name
-    http://you-endpoint/1.0/resource-name/1
-    http://you-endpoint/1.0/resource-name?id[]=2&id[]=6
-    http://you-endpoint/1.0/resource-name?id!![]=6&id!![]=8&limit=500
+    http://localhost:9080/1.0/exemple
+    http://localhost:9080/1.0/exemple/1
+    http://localhost:9080/1.0/exemple?id[]=2&id[]=6
+    http://localhost:9080/1.0/exemple?id!![]=6&id!![]=8&limit=500
 
 It's not perfect, but we encourage you to help us improve it :)
 
@@ -22,7 +22,7 @@ It's not perfect, but we encourage you to help us improve it :)
 
 - If you are using docker, copy docker-compose.yml.dist to docker-compose.yml
 
-- SET your newrelic app name in web/index.php
+- At this point, you can already test the tool. Import the exemple database /tests/exemple_dbname.sql and try it for yourself.
 
 - Create Models that will match your database schema, don't forget to use the interface
 
