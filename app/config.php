@@ -10,21 +10,21 @@
 date_default_timezone_set('UTC');
 
 if (!defined('ROOT_PATH')) {
-    define("ROOT_PATH", __DIR__ . "/..");
+    define('ROOT_PATH', __DIR__ . '/..');
 }
 
 $app['serviceDependencyUrl'] = array();
 $app['hateoas'] = array();
 
-if(defined('SERVICE_DEPENDENCY_URL')) {
+if (defined('SERVICE_DEPENDENCY_URL')) {
     $app['serviceDependencyUrl'] = unserialize(SERVICE_DEPENDENCY_URL);
 }
 
-if(defined('HATEOAS')) {
+if (defined('HATEOAS')) {
     $app['hateoas'] = unserialize(HATEOAS);
 }
 
-//Doctrine
+// Doctrine
 $app->register(
     new \Silex\Provider\DoctrineServiceProvider(),
     array(
@@ -40,7 +40,7 @@ $app->register(
     )
 );
 
-//Redis
+// Redis
 //$app->register(
 //    new Predis\Silex\ClientServiceProvider(),
 //    [
@@ -48,7 +48,7 @@ $app->register(
 //    ]
 //);
 
-//Monolog
+// Monolog
 /*
 $app->register(
     new MonologServiceProvider(),
@@ -86,5 +86,4 @@ $app->register(
 $app['monitor'] = function () use ($app) {
     return $app['statsd'];
 };
-
 */

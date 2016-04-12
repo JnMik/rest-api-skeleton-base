@@ -11,8 +11,9 @@ use Crak\Api\DefaultNS\Provider\ControllerProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Support3w\Api\Generic\Provider\DefaultControllerProvider;
+use Support3w\Api\Generic\Provider\RepositoryProvider;
 use Support3w\Api\Generic\Provider\RestNormalizerProvider;
-use Support3w\Api\Generic\Repository\DefaultRepository;
+use Crak\Api\DefaultNS\Provider\ControllerProvider as AppControllerProvider;
 
 $app['debug'] = true;
 $app['api.version'] = '1.0';
@@ -22,39 +23,30 @@ require __DIR__ . '/config.php';
 require __DIR__ . '/middleware.php';
 require __DIR__ . '/routing.php';
 
-//Rest Normalizer
+// Rest Normalizer
 $app->register(new RestNormalizerProvider());
 
-// Init Repository
-
-$app['exemple.repository'] = $app->share(
-    function () use ($app) {
-        $fieldTableAlias = array(
-            'id' => 'E'
-        );
-        $mainTableAlias = 'E';
-        return new DefaultRepository($app['db'], 'exemple_tablename', $fieldTableAlias, $mainTableAlias);
-    }
-);
-
-//Validator
+// Validator
 $app->register(new ValidatorServiceProvider());
 
-//Controllers
+// Controllers
+$appControllerProvider = new AppControllerProvider();
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new DefaultControllerProvider());
 $app->register(new ControllerProvider());
 
+// Repositories
+$app->register(new RepositoryProvider(
+    $appControllerProvider->registerControllers()
+));
 
-//Errors
-/*
-$app->error(
+// Errors
+/*$app->error(
     function (\Exception $e, $code) use ($app) {
         $app['logger']->addError($e->getMessage());
 
         return new JsonResponse(['error' => $e->getMessage()], $code);
     }
-);
-*/
+);*/
 
 return $app;

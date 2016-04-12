@@ -1,56 +1,29 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Jm
- * Date: 16-01-20
- * Time: 20:42
- * To change this template use File | Settings | File Templates.
- */
 
 namespace Crak\Api\DefaultNS\Provider;
 
-use Crak\Api\DefaultNS\Controller\ExempleController;
 use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Support3w\Api\Generic\DataObject\Controller;
 
-class ControllerProvider implements ServiceProviderInterface {
-
-    /**
-     * Registers services on the given app.
-     *
-     * This method should only be used to configure services and parameters.
-     * It should not get services.
-     */
-    public function register(Application $app)
-    {
-
-        $app['exemple.controller'] = $app->share(
-            function () use ($app) {
-                return new ExempleController(
-                    $app['rest_normalizer.builder'],
-                    $app['logger'],
-                    $app['exemple.repository'],
-                    $app['request'],
-                    $app['hateoas'],
-                    $app['paginator.service'],
-                    $app['json-api-transport.service'],
-                    'Crak\Api\DefaultNS\Model\ExempleModel'
-                );
-            }
-        );
-
-    }
+/**
+ * Class ControllerProvider
+ *
+ * @package Crak\Api\DefaultNS\Provider
+ * @author  Olivier Beauchemin <obeauchemin@crakmedia.com>
+ */
+class ControllerProvider
+{
+    const NS = 'Crak\Api\DefaultNS\Controller\\';
 
     /**
-     * Bootstraps the application.
-     *
-     * This method is called after all services are registered
-     * and should be used for "dynamic" configuration (whenever
-     * a service must be requested).
+     * @return array
      */
-    public function boot(Application $app)
+    public function registerControllers()
     {
-        // TODO: Implement boot() method.
-    }
+        $controllers = [
+            new Controller(self::NS . 'ExampleController'),
+        ];
 
+        return $controllers;
+    }
 }

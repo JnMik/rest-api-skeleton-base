@@ -8,19 +8,17 @@
  */
 
 /** @var $app \Silex\Application */
-
-//Declare Routes
-$api = $app['controllers_factory'];
 /** @var $api \Silex\ControllerCollection */
 
-//$api->get('/ping', "default.controller:ping");
+// Declare Routes
+$api = $app['controllers_factory'];
 
-$api->get('/exemple',  'exemple.controller:fetchAll');
-$api->post('/exemple', "exemple.controller:create");
-$api->get('/exemple/{id}', 'exemple.controller:findById');
-$api->put('/exemple/{id}', "exemple.controller:update");
-$api->delete('/exemple/{id}', "exemple.controller:delete");
+// RESOURCES EXAMPLE
+$api->get('/resources/example',  'example.controller:fetchAll');
+$api->post('/resources/example', 'example.controller:create');
+$api->get('/resources/example/{id}', 'example.controller:findById');
+$api->put('/resources/example/{id}', 'example.controller:update');
+$api->delete('/resources/example/{id}', 'example.controller:delete');
 
-
-//Mount routes
-$app->mount($app['api.endpoint'].$app['api.version'], $api);
+// Mount routes
+$app->mount($app['api.endpoint'] . $app['api.version'], $api);
