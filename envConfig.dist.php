@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('APP_NAME')) {
-    define('APP_NAME', 'API Exemple');
+    define('APP_NAME', 'API Example');
 }
 
 if (extension_loaded('newrelic')) {

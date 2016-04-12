@@ -4,6 +4,7 @@ logs/*
 bin/*
 .idea
 !logs/.gitkeep
+envConfig.php
 
 docker-compose.yml
 phpunit.xml

@@ -17,17 +17,17 @@ $app = new Silex\Application();
 
 require __DIR__ . '/../app/config.php';
 
-//Console
+// Console
 $app->register(
     new ConsoleServiceProvider(),
     array(
         'console.name' => 'DefaultServiceConsole',
         'console.version' => '0.1.0',
-        'console.project_directory' => __DIR__ . "/.."
+        'console.project_directory' => __DIR__ . '/..'
     )
 );
 
-//Migrations
+// Migrations
 $app->register(
     new MigrationServiceProvider(),
     array(
@@ -36,5 +36,5 @@ $app->register(
     )
 );
 
-$console = & $app["console"];
+$console = & $app['console'];
 $console->run();
