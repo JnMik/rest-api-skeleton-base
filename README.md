@@ -37,7 +37,7 @@ It's not perfect, but we encourage you to help us improve it :)
     fieldTableAlias are necessary when your repository feth more than one table in queries, but could be refactored in better code.
     Using the DefaultRepository will provide you with all ready to use methods like [count, fetchAll, findById, findByParameters, create, update, delete, findNext, findPrevious and other private methods]
     If you think your repository will have more custom needs, please create a new repository in src/Repository and extends RepositoryBase directly.
-
+```
     $app['example.repository'] = $app->share(
         function () use ($app) {
             $fieldTableAlias = array(
@@ -48,6 +48,7 @@ It's not perfect, but we encourage you to help us improve it :)
             return new DefaultRepository($app['db'], 'exemple_tablename', $fieldTableAlias, $mainTableAlias);
         }
     );
+```
 
 - Now register these controllers in src/Provider/ControllerProvider.php
 
