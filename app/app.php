@@ -7,9 +7,9 @@
  * @copyright 2015 Crakmedia
  */
 
-use Crak\Api\DefaultNS\Provider\ControllerProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
+use Support3w\Api\Generic\Provider\ControllerProvider;
 use Support3w\Api\Generic\Provider\DefaultControllerProvider;
 use Support3w\Api\Generic\Provider\RepositoryProvider;
 use Support3w\Api\Generic\Provider\RestNormalizerProvider;
@@ -33,7 +33,10 @@ $app->register(new ValidatorServiceProvider());
 $appControllerProvider = new AppControllerProvider();
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new DefaultControllerProvider());
-$app->register(new ControllerProvider());
+
+$app->register(new ControllerProvider(
+    $appControllerProvider->registerControllers()
+));
 
 // Repositories
 $app->register(new RepositoryProvider(
