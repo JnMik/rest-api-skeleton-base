@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Crak\Api\DefaultNS\Model;
+namespace Api\Base\Model;
 
 use Support3w\Api\Generic\Model\DefaultModel;
 use Support3w\Api\Generic\Model\ModelInterface;
@@ -15,7 +15,7 @@ use Support3w\Api\Generic\Model\ModelInterface;
 /**
  * Class ExampleModel
  *
- * @package Crak\Api\DefaultNS\Model
+ * @package Api\Base\Model
  */
 class ExampleModel extends DefaultModel implements ModelInterface
 {

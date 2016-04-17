@@ -1,6 +1,6 @@
 <?php
 
-namespace Crak\Api\DefaultNS\Provider;
+namespace Api\Base\Provider;
 
 use Silex\Application;
 use Support3w\Api\Generic\DataObject\Controller;
@@ -8,12 +8,12 @@ use Support3w\Api\Generic\DataObject\Controller;
 /**
  * Class ControllerProvider
  *
- * @package Crak\Api\DefaultNS\Provider
+ * @package Api\Base\Provider
  * @author  Olivier Beauchemin <obeauchemin@crakmedia.com>
  */
 class ControllerProvider
 {
-    const NS = 'Crak\Api\DefaultNS\Controller\\';
+    const NS = 'Api\Base\Controller\\';
 
     /**
      * @return array

@@ -36,12 +36,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Crak\\Api\\DefaultNS\\": "src/"
+      "Api\\Base\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Crak\\Api\\DefaultNS\\": "tests/"
+      "Api\\Base\\": "tests/"
     }
   },
   "config": {

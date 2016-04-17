@@ -1,6 +1,6 @@
 <?php
 
-namespace Crak\Api\DefaultNS\Controller;
+namespace Api\Base\Controller;
 
 use Support3w\Api\Generic\Controller\ControllerBase;
 

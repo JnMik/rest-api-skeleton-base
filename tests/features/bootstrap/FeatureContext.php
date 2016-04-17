@@ -110,9 +110,9 @@ class FeatureContext extends BehatContext
         }
 
         //Create migrations
-        $dbalConnection = \Crak\Api\DefaultNS\DbalConnection::create();
+        $dbalConnection = \Api\Base\DbalConnection::create();
 
-        $configuration = \Crak\Api\DefaultNS\MigrationConfiguration::create($dbalConnection);
+        $configuration = \Api\Base\MigrationConfiguration::create($dbalConnection);
 
         $version = $configuration->getVersion('20150611135326');
         $version->execute('up');

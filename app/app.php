@@ -13,7 +13,7 @@ use Support3w\Api\Generic\Provider\ControllerProvider;
 use Support3w\Api\Generic\Provider\DefaultControllerProvider;
 use Support3w\Api\Generic\Provider\RepositoryProvider;
 use Support3w\Api\Generic\Provider\RestNormalizerProvider;
-use Crak\Api\DefaultNS\Provider\ControllerProvider as AppControllerProvider;
+use Api\Base\Provider\ControllerProvider as AppControllerProvider;
 
 $app['debug'] = true;
 $app['api.version'] = '1.0';

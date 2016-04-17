@@ -14,6 +14,32 @@ Here's basic usage example :
 
 It's not perfect, but we encourage you to help us improve it :)
 
+# APACHE VHOST
+
+If your are not using nginx or docker, you might find this useful.
+
+      <VirtualHost *:80>
+           ServerName some.localdomain
+
+           ## Vhost docroot
+           DocumentRoot "/var/www/rest-api-skeleton-base/web"
+           DirectoryIndex index.php
+
+           <Directory "/var/www/rest-api-skeleton-base/web">
+             <IfModule mod_rewrite.c>
+               Options -MultiViews
+               RewriteEngine On
+               RewriteCond %{REQUEST_FILENAME} !-f
+               RewriteRule ^ index.php [QSA,L]
+             </IfModule>
+           </Directory>
+
+           ## Logging
+           ErrorLog "/var/log/apache2/rest-api-skeleton-base_error.log"
+           ServerSignature Off
+           CustomLog "/var/log/apache2/rest-api-skeleton-base_access.log" combined
+         </VirtualHost>
+
 # Create a new API -- Getting Started
 
 - Note that all your database table MUST have an id and deleted column so you can use the API generics.
