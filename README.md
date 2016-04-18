@@ -40,9 +40,7 @@ If your are not using nginx or docker, you might find this useful.
            CustomLog "/var/log/apache2/rest-api-skeleton-base_access.log" combined
          </VirtualHost>
 
-# Create a new API -- Getting Started
-
-- Note that all your database table MUST have an id and deleted column so you can use the API generics.
+# Test this API skeleton to understand what it does
 
 - Please copy envConfig.dist.php to envConfig.php and configure it
 
@@ -50,19 +48,39 @@ If your are not using nginx or docker, you might find this useful.
 
 - At this point, you can already test the tool. Import the exemple database /tests/exemple_dbname.sql and try it for yourself.
 
-- Create Models that will match your database schema, don't forget to use the interface
+# Create new API -- Getting Started
 
-- Define routings that your API will need in app/routing.php
+The next steps will tell you to create Models and Controllers, but know that all of these can be generated if your tables respect our standards.
+Standards are simple : 
+
+- All your database tables MUST have an id and deleted column so you can use the API generics. 
+
+- table and field names must respect the snake_case standard.
+    	
+Here's some example for the generation : 
+
+	php app/console.php support3w:generate-api-from-db "Your\Api\Namespace"
+	php app/console.php support3w:generate-api-from-db "Your\Api\Namespace" specific_table_name
+	php app/console.php support3w:generate-api-from-db "Your\Api\Namespace" --write_in_src_folder
+
+You can also skip the generation tool and proceed with the next 2 steps
+
+- Create Models that will match your database schema, don't forget to use the interface
 
 - Create your controllers in src/Controller, extends the ControllerBase all a bunch of methods will be ready to go (create, find, findByParameters, delete, update)
 
-- These controllers will need to be registered to the application, but first, please create a repository to manage your Model.
+And then ...
+
+- Define routings that your API will need in app/routing.php
+
+- The controllers will need to be registered to the application, but first, please create a repository to manage your Model.
 
     Something like that in the /app/app.php, another file could be create as well to store them
     Main table Alias will be use for queries, in this example SELECT * from exemple_tablename E
     fieldTableAlias are necessary when your repository feth more than one table in queries, but could be refactored in better code.
     Using the DefaultRepository will provide you with all ready to use methods like [count, fetchAll, findById, findByParameters, create, update, delete, findNext, findPrevious and other private methods]
     If you think your repository will have more custom needs, please create a new repository in src/Repository and extends RepositoryBase directly.
+
 ```
     $app['example.repository'] = $app->share(
         function () use ($app) {

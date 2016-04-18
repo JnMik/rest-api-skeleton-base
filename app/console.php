@@ -8,14 +8,12 @@
  * @copyright 2015 Crakmedia
  */
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 use Dbtlr\MigrationProvider\Provider\MigrationServiceProvider;
 use Knp\Provider\ConsoleServiceProvider;
+use Support3w\Api\Command\GenerateApiFromDb;
+use Knp\Console\Application as ConsoleApplication;
 
-$app = new Silex\Application();
-
-require __DIR__ . '/../app/config.php';
+require __DIR__ . '/../bootstrap.php';
 
 // Console
 $app->register(
@@ -27,7 +25,16 @@ $app->register(
     )
 );
 
+$console = & $app['console'];
+
+/**
+ * @var ConsoleApplication $console
+ */
+$console->add(new GenerateApiFromDb($app['db.options']));
+
+
 // Migrations
+/*
 $app->register(
     new MigrationServiceProvider(),
     array(
@@ -35,6 +42,7 @@ $app->register(
         'db.migrations.table_name' => 'migration_versions_default_table',
     )
 );
+*/
 
-$console = & $app['console'];
+
 $console->run();
