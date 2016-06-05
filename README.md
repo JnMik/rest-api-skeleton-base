@@ -2,8 +2,8 @@
 
 This is a kickoff project to create an API rest in few minutes.
 There is also some stuff in place to help you use the Skeleton with Docker.
-Using this skeleton, rour api will handle crud methods get, post, put, delete as well as paging a bunch of RepositoryBase methods.
-The api is able to handle Hateoas resolving, sorting and joins on table.
+Using this skeleton, your api will handle crud methods get, post, put, delete as well as paging.
+The api could able to handle Hateoas resolving, sorting and joins on table, but the feature here is far from being perfect.
 
 Here's basic usage example :
 
@@ -12,11 +12,11 @@ Here's basic usage example :
     http://localhost:9080/1.0/exemple?id[]=2&id[]=6
     http://localhost:9080/1.0/exemple?id!![]=6&id!![]=8&limit=500
 
-It's not perfect, but we encourage you to help us improve it :)
+It's not perfect, but I encourage you to improve it and submit a PR.
 
 # APACHE VHOST
 
-If your are not using nginx or docker, you might find this useful.
+Useful if you are not able to use docker or nginx, here's a fallback for apache.
 
       <VirtualHost *:80>
            ServerName some.localdomain
@@ -50,17 +50,25 @@ If your are not using nginx or docker, you might find this useful.
 
 # Create new API -- Getting Started
 
-The next steps will tell you to create Models and Controllers, but know that all of these can be generated if your tables respect our standards.
+These next steps will help you to create Models and Controllers, but know that all of this can be generated if your tables respect our API standards.
+
 Standards are simple : 
 
-- All your database tables MUST have an id and deleted column so you can use the API generics. 
+- All your database tables MUST implement at least 2 columns : id and deleted. 
 
 - table and field names must respect the snake_case standard.
     	
-Here's some example for the generation : 
+Once your database is ready, here's some example for the generation of the Api: 
 
-	php app/console.php support3w:generate-api-from-db "Your\Api\Namespace"
-	php app/console.php support3w:generate-api-from-db "Your\Api\Namespace" specific_table_name
+	Keep in mind that generated files per default are in a temporary folder, so you can double check them.
+
+	Generate an api with a route for all tables :
+	php app/console.php support3w:generate-api-from-db "Your\Api\Namespace"  
+	
+	Generate an api with only 1 route :
+	php app/console.php support3w:generate-api-from-db "Your\Api\Namespace" specific_table_name 
+	
+	Skip the temporary folder and generate the files directly in the source folder.
 	php app/console.php support3w:generate-api-from-db "Your\Api\Namespace" --write_in_src_folder
 
 You can also skip the generation tool and proceed with the next 2 steps
