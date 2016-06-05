@@ -104,7 +104,7 @@ And then ...
 
 - Now register these controllers in src/Provider/ControllerProvider.php
 
-[![Minimum PHP Version](http://img.shields.io/badge/php-%3E%3D%205.4-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](http://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg)](https://php.net/)
 [![Build Status](https://travis-ci.org/CrakLabs/skeleton-service.svg)](https://travis-ci.org/CrakLabs/rest-normalizer)
 [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/16996788-c5c9-4f59-817e-23592755f98d.svg)](https://insight.sensiolabs.com/projects/16996788-c5c9-4f59-817e-23592755f98d)
 [![License](https://img.shields.io/packagist/l/craklabs/skeleton-service.svg)](https://packagist.org/packages/craklabs/skeleton-service)
