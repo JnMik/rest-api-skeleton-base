@@ -11,5 +11,3 @@ COPY ./docker/api.conf /etc/nginx/conf.d/api.conf
 
 RUN yum install -y wget
 
-# Install composer
-RUN bash -c "wget http://getcomposer.org/composer.phar && php composer.phar install"
