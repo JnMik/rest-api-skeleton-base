@@ -6,7 +6,6 @@ your_service_name:
     - ./docker/develop.env
   volumes:
     - .:/srv/www
-    - ./docker/api.conf:/etc/nginx/conf.d/api.conf
 shell:
   build: .
   working_dir: /srv/www

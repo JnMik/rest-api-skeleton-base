@@ -191,7 +191,14 @@ In order to monitor metrics of application, you should use $app['monitor']. For 
 
 If you are using docker and have connection timeout to the database, you should not use localhost a db_host, use your local IP instead.
 
+
+# Debugging
+
+Setting ENV = 'prod'; in envConfig.php will remove dev_details from jsonResponse when an error is thrown.
+Make sure you have ENV = 'dev'; if you want to investigate errors
+
 # Contributors
 
 - Crakmedia
 - Support3w
+

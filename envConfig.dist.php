@@ -21,6 +21,7 @@ const API_DB_DRIVER = 'pdo_mysql';
 const API_DB_HOST = '10.1.15.121';
 const API_DB_NAME = 'exemple_dbname';
 const API_DB_USER = 'root';
+const API_DB_PORT = 3306;
 const API_DB_PWD = '';
 const API_DB_MEMORY = false;
 const ENV = 'DEV';

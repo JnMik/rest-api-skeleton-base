@@ -32,6 +32,15 @@ $app->before(
 // Handling CORE response with right headers
 $app->after(
     function (Request $request, Response $response) {
+
+        if(ENV != 'DEV') {
+            $jsonResponse = json_decode($response->getContent(), true);
+            if(is_array($jsonResponse) && isset($jsonResponse['dev_details'])) {
+                unset($jsonResponse['dev_details']);
+                $response->setContent(json_encode($jsonResponse));
+            }
+        }
+
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
     }

@@ -34,6 +34,7 @@ $app->register(
             'host' => API_DB_HOST,
             'user' => API_DB_USER,
             'password' => API_DB_PWD,
+            'port' => API_DB_PORT,
             'memory' => API_DB_MEMORY,
             'charset' => 'utf8',
         )
