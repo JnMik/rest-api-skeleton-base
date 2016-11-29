@@ -2517,16 +2517,16 @@
         },
         {
             "name": "support3w/api-generics",
-            "version": "0.0.14",
+            "version": "0.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JnMik/api-generics.git",
-                "reference": "4467bec7ceab91788b84e754cdde1fbe0e2688a0"
+                "reference": "d61e2f0027fbc0dee2957dffc03e1357c3a15eaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JnMik/api-generics/zipball/4467bec7ceab91788b84e754cdde1fbe0e2688a0",
-                "reference": "4467bec7ceab91788b84e754cdde1fbe0e2688a0",
+                "url": "https://api.github.com/repos/JnMik/api-generics/zipball/d61e2f0027fbc0dee2957dffc03e1357c3a15eaf",
+                "reference": "d61e2f0027fbc0dee2957dffc03e1357c3a15eaf",
                 "shasum": ""
             },
             "require": {
@@ -2547,7 +2547,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2016-11-09 04:10:33"
+            "time": "2016-11-24 19:41:14"
         },
         {
             "name": "support3w/json-api-transport-service",
